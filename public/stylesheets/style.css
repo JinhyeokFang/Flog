@@ -1,6 +1,9 @@
 body {
   margin: 0px;
-  border-bottom: 5px solid rgb(220, 220, 220);
+}
+
+#body {
+  background-color: rgb(220, 220, 220);
 }
 
 #head {
