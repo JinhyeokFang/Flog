@@ -32,9 +32,8 @@ body {
 
 .contents {
   background-color: rgb(180, 180, 180);
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: 96%;
+  margin-left: 2%;
   box-shadow: 5px 5px 5px rgb(144, 144, 144);
 }
 
