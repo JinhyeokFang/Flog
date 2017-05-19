@@ -1,3 +1,57 @@
 body {
   margin: 0px;
+  border-bottom: 5px solid rgb(200, 200, 200);
+}
+
+#head {
+  width: 100%;
+  height: 300px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 5px solid rgb(200, 200, 200);
+  box-shadow: 10px 10px 5px #000000;
+}
+
+#title {
+  text-align: center;
+}
+
+#article {
+  margin-top: 10px;
+}
+
+#foot {
+  width: 100%;
+  height: 200px;
+  background-color: rgb(126, 126, 126);
+}
+
+#information {
+  text-align: center;
+}
+
+.contents {
+  background-color: rgb(180, 180, 180);
+  width: 95%;
+  margin-left: 5%;
+  box-shadow: 10px 10px 5px #000000;
+}
+
+.contentsHeader {
+  background-color: rgb(162,162,162);
+}
+
+.contentsTitle {
+  text-align: center;
+}
+
+.contentsTime {
+
+}
+
+.contentsDescription {
+  
+}
+
+.contentsFiles {
+
 }
