@@ -1,19 +1,15 @@
-doctype html
 html
-  head
-    title= name + 's FilebLOG'
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    meta(charset='utf-8')
-  body
-    div(id='body')
-      header(id='head')
-        h1(id='title')= name
-      article(id='article')
-        div(class="contents")
-          header(class="contentsHeader")
-            h2(class="contentsTitle") contentsTitle
-            h3(class="contentsTime")  contentsTime
-          p(class="contentsDescription")  contentsDescription
-          p(class="contentsFiles")  contentsFiles
-    footer(id="foot")
-      span(id="information") developed by JinhyeokBang
+    head
+        title Your FileBlog, F.LOG
+        meta(charset="utf-8")
+    body
+        div(id='body')
+            header(id='head')
+                h1(id='title')= name
+            article(id='article')
+                div(id="contents")
+                header(class="contentsHeader")
+                    h2(class="contentsTitle") contentsTitle
+                p(class="contentsDescription")  contentsDescription
+            footer(id="foot")
+            span(id="information") developed by JinhyeokBang
