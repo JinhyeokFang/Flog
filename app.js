@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static('./public'));
 
-app.use('/', routes);
+app.use('/blog', routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
