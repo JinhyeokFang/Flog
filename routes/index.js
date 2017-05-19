@@ -26,6 +26,11 @@ router.post('/addUser', function(req, res) {
 
 });
 
+/* POST User page. */
+router.post('/User', function(req, res) {
+
+});
+
 /* POST addContents page. */
 router.post('/addContents', function(req, res) {
 
