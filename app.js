@@ -1,5 +1,5 @@
 var express = require('express');
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var app = express();
@@ -9,8 +9,8 @@ app.set('views', './views');
 app.set('view engine', 'jade');
 
 //middle ware
-//app.use(bodyParser.json());
-//app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 app.use(express.static('./public'));
 
 app.use('/', routes);
