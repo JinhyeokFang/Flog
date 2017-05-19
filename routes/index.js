@@ -13,12 +13,12 @@ router.get('/', function(req, res) {
 
 /* GET signin page. */
 router.get('/signin', function(req, res) {
-
+  res.render('signin');
 });
 
 /* GET signup page. */
 router.get('/signup', function(req, res) {
-
+  res.render('signup');
 });
 
 /* POST addUser page. */
