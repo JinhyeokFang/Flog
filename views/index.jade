@@ -4,4 +4,14 @@ html
     title= name + 's FilebLOG'
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    h1= name
+    header(id='head')
+      h1(id='title')= name
+    article(id='article')
+      div(class="contents")
+        header(class="contentsHeader")
+          h2(class="contentsTitle")
+          h3(class="contentsTime")
+        p(class="contentsDescription")
+        p(class="contentsFiles")
+    footer(id="foot")
+      span(id="information")
