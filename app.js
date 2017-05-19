@@ -12,7 +12,7 @@ app.set('view engine', 'jade');
 //app.use(bodyParser.urlencoded());
 app.use(express.static('./public'));
 
-app.use('/blog', routes);
+app.use('/', routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
