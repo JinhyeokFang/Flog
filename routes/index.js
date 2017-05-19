@@ -8,7 +8,7 @@ router.get('/blog/:name', function(req, res) {
 
 /* GET index page. */
 router.get('/', function(req, res) {
-
+  res.render('index');
 });
 
 /* GET signin page. */
