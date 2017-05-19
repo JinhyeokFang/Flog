@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET blog page. */
 router.get('/blog/:name', function(req, res) {
-  res.render('index', { name: req.params.name });
+  res.render('blog', { name: req.params.name });
 });
 
 /* GET index page. */
