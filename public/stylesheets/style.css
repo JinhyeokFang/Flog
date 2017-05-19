@@ -8,11 +8,12 @@ body {
   height: 30px;
   background-color: rgb(255, 255, 255);
   border-bottom: 5px solid rgb(200, 200, 200);
-  box-shadow: 10px 10px 5px rgb(144, 144, 144);
+  box-shadow: 5px 5px 5px rgb(144, 144, 144);
 }
 
 #title {
   text-align: center;
+  border: 0px;
 }
 
 #article {
@@ -33,7 +34,8 @@ body {
   background-color: rgb(180, 180, 180);
   width: 95%;
   margin-left: 5%;
-  box-shadow: 10px 10px 5px rgb(144, 144, 144);
+  margin-right: 5%;
+  box-shadow: 5px 5px 5px rgb(144, 144, 144);
 }
 
 .contentsHeader {
