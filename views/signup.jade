@@ -2,13 +2,14 @@ html
     head
         title Your FileBlog, F.LOG
         meta(charset="utf-8")
+        link(rel='stylesheet', href='/stylesheets/sign.css')
     body
         div(id='body')
             article(id='article')
                 div(id="contents")
-                    form(id="signup" action="../addUser" method="post")
-                        input(id="idUp" name="id")
-                        input(id="passUp" name="pass")
-                        input(type="submit" value="submit")
+                    form(id="sign" action="../addUser" method="post")
+                        input(id="id" name="id")
+                        input(id="pass" name="pass")
+                        input(id="button" type="submit" value="submit")
             footer(id="foot")
             span(id="information") developed by JinhyeokBang
