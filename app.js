@@ -1,7 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var routes = require('./routes/index');
 var app = express();
+
+//use session
+app.use(session({
+ secret: '@#@$SECRET#@$#$',
+ resave: false,
+ saveUninitialized: true
+}));
 
 //templete engine
 app.set('views', './views');

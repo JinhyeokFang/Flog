@@ -16,6 +16,7 @@ var UserSchema = mongoose.Schema({
 });
 
 var UserModel = mongoose.model("UserModel", UserSchema);
+var sess = {username:'hello'};
 
 /* GET blog page. */
 router.get('/blog/:name', function(req, res) {
@@ -24,7 +25,7 @@ router.get('/blog/:name', function(req, res) {
 
 /* GET index page. */
 router.get('/', function(req, res) {
-  res.render('index');
+  res.render('index', {username: sess.username});
 });
 
 /* GET signin page. */
@@ -58,10 +59,13 @@ router.post('/User', function(req, res) {
     password: req.body.pass
   }, (err,user) => {
     if(err) return console.error(err);
-    if(!user) res.render('signFail');
-    res.send({
-      user: user
-    });
+    if(!user) {
+      res.render('signFail');
+      return;
+    } 
+    res.render('signSuccess');
+    sess = req.session;
+    sess.username = req.body.id;
   });
 });
 
