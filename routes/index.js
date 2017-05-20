@@ -16,16 +16,25 @@ var UserSchema = mongoose.Schema({
 });
 
 var UserModel = mongoose.model("UserModel", UserSchema);
-var sess = {username:'hello'};
+var sess = {username:0};
 
-/* GET blog page. */
-router.get('/blog/:name', function(req, res) {
-  res.render('blog', { name: req.params.name });
+/* GET my blog page. */
+router.get('/blog/', (req,res) => {
+  if (sess.username != 0)
+    res.render('blog', { name: sess.username });
+});
+
+/* GET the other user's blog page. */
+router.get('/blog/:name', (req,res) => {
+    res.render('blog', { name: req.params.name });
 });
 
 /* GET index page. */
 router.get('/', function(req, res) {
-  res.render('index', {username: sess.username});
+  if (sess.username == 0)
+    res.render('index');
+  else
+    res.render('index', { name: sess.username });
 });
 
 /* GET signin page. */
