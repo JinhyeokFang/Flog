@@ -1,0 +1,14 @@
+html
+    head
+        title Your FileBlog, F.LOG
+        meta(charset="utf-8")
+        link(rel='stylesheet', href='/stylesheets/sign.css')
+    body
+        div(id='body')
+            article(id='article')
+                div(id="contents")
+                    form(id="write" action="../addContents" method="post" enctype="multipart/form-data")
+                        input(id="title" type="text" name="title")
+                        input(id="description" type="text" name="description")
+                        input(id="file" type="file", name="file")
+                        input(id="button" type="submit" value="submit")

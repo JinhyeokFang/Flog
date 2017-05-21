@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var multipart = require('connect-multiparty');
 var routes = require('./routes/index');
 var app = express();
 
@@ -19,7 +20,7 @@ app.set('view engine', 'jade');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static('./public'));
-
+app.use(multipart({ uploadDir: __dirname + '/files'}));
 app.use('/', routes);
 
 /// catch 404 and forwarding to error handler

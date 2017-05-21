@@ -1,9 +1,11 @@
 var express = require('express');
+var fs = require('fs');
 var router = express.Router();
 
 //mongodb
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test'); // 기본 설정에 따라 포트가 상이 할 수 있습니다.
+mongoose.connect('mongodb://localhost:27017/test');
+mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -16,6 +18,14 @@ var UserSchema = mongoose.Schema({
 });
 
 var UserModel = mongoose.model("UserModel", UserSchema);
+var ContentsSchema = mongoose.Schema({
+  title: String,
+  description: String,
+  id: String,
+  fileId: String
+});
+
+var ContentsModel = mongoose.model("ContentsModel", ContentsSchema);
 var sess = {username:0};
 
 /* GET my blog page. */
@@ -45,6 +55,12 @@ router.get('/signin', function(req, res) {
 /* GET signup page. */
 router.get('/signup', function(req, res) {
   res.render('signup');
+});
+
+/* GET write page. */
+router.get('/write', function(req, res) {
+  if (sess.username != 0)
+    res.render('write');
 });
 
 /* POST addUser page. */
@@ -80,12 +96,17 @@ router.post('/User', function(req, res) {
 
 /* POST addContents page. */
 router.post('/addContents', function(req, res) {
+    var ContentsTitle = req.body.title;
+    var ContentsDescription = req.body.description;
+    var ContentsId = req.files.file.name;
+    var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId});
 
-});
-
-/* POST addContents page. */
-router.post('/addContents', function(req, res) {
-
+    ContentsIns.save(function(err, UserIns){
+      if(err) return console.error(err);
+      if(req.files.file) {
+        res.redirect('/blog');
+      }
+    });
 });
 
 /* DELETE addContents page. */
