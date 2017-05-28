@@ -16,7 +16,7 @@ html
               h3(class="contentsTime")  contentsTime
             p(class="contentsDescription")= data[i].description
             p(class="contentsFiles")
-              a(href="../files/"+data[i]._id)= data[i].fileId
+              a(href="../files/"+data[i].path)= data[i].fileId
           - }
     footer(id="foot")
       span(id="information") developed by JinhyeokBang

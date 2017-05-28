@@ -22,7 +22,8 @@ var ContentsSchema = mongoose.Schema({
   title: String,
   description: String,
   id: String,
-  fileId: String
+  fileId: String,
+  path: String
 });
 
 var ContentsModel = mongoose.model("ContentsModel", ContentsSchema);
@@ -101,12 +102,13 @@ router.post('/addContents', function(req, res) {
     var ContentsTitle = req.body.title;
     var ContentsDescription = req.body.description;
     var ContentsId = req.files.file.name;
-    var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId});
+    var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId, path: req.files.file.path.substring(25,req.files.file.path.length)});
 
     ContentsIns.save(function(err, UserIns){
       if(err) return console.error(err);
       if(req.files.file) {
         res.redirect('/blog');
+        console.log(req.files.file);
       }
     });
 });

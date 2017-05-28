@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(express.static('./public'));
 app.use(multipart({ uploadDir: __dirname + '/files'}));
+app.use(express.static('./files'));
 app.use('/', routes);
 
 /// catch 404 and forwarding to error handler
