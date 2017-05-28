@@ -10,10 +10,13 @@ html
         h1(id='title')= name
       article(id='article')
         div(class="contents")
-          header(class="contentsHeader")
-            h2(class="contentsTitle") contentsTitle
-            h3(class="contentsTime")  contentsTime
-          p(class="contentsDescription")  contentsDescription
-          p(class="contentsFiles")  contentsFiles
+          - for (var i = 0; i < length; i++) {
+            header(class="contentsHeader")
+              h2(class="contentsTitle")= data[i].title
+              h3(class="contentsTime")  contentsTime
+            p(class="contentsDescription")= data[i].description
+            p(class="contentsFiles")
+              a(href="../files/"+data[i]._id)= data[i].fileId
+          - }
     footer(id="foot")
       span(id="information") developed by JinhyeokBang

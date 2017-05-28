@@ -30,8 +30,10 @@ var sess = {username:0};
 
 /* GET my blog page. */
 router.get('/blog/', (req,res) => {
-  if (sess.username != 0)
-    res.render('blog', { name: sess.username });
+  ContentsModel.find((err,data) => {
+    if (sess.username != 0 && !err)
+      res.render('blog', { name: sess.username , data: data, length: data.length});   
+  }).sort({ "_id" : -1 });
 });
 
 /* GET the other user's blog page. */
@@ -111,6 +113,10 @@ router.post('/addContents', function(req, res) {
 
 /* DELETE addContents page. */
 router.delete('/deleteContents', function(req, res) {
+
+});
+
+router.get('/findAll', (req,res) => {
 
 });
 
