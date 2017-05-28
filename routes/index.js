@@ -23,6 +23,7 @@ var ContentsSchema = mongoose.Schema({
   description: String,
   id: String,
   fileId: String,
+  time: String,
   path: String
 });
 
@@ -39,7 +40,10 @@ router.get('/blog/', (req,res) => {
 
 /* GET the other user's blog page. */
 router.get('/blog/:name', (req,res) => {
-    res.render('blog', { name: req.params.name });
+  ContentsModel.find((err,data) => {
+    if (sess.username != 0 && !err)
+      res.render('blog', { name: sess.username , data: data, length: data.length});   
+  }).sort({ "_id" : -1 });
 });
 
 /* GET index page. */
@@ -102,7 +106,9 @@ router.post('/addContents', function(req, res) {
     var ContentsTitle = req.body.title;
     var ContentsDescription = req.body.description;
     var ContentsId = req.files.file.name;
-    var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId, path: req.files.file.path.substring(25,req.files.file.path.length)});
+    var date = new Date();
+    var timeNow = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId, time: timeNow, path: "../"+req.files.file.path.substring(20,req.files.file.path.length) });
 
     ContentsIns.save(function(err, UserIns){
       if(err) return console.error(err);

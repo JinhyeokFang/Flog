@@ -13,7 +13,7 @@ html
           - for (var i = 0; i < length; i++) {
             header(class="contentsHeader")
               h2(class="contentsTitle")= data[i].title
-              h3(class="contentsTime")  contentsTime
+              h3(class="contentsTime")= data[i].time
             p(class="contentsDescription")= data[i].description
             p(class="contentsFiles")
               a(href="../files/"+data[i].path)= data[i].fileId
