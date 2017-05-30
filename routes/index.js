@@ -49,7 +49,7 @@ router.get('/blog/:name', (req,res) => {
 /* GET index page. */
 router.get('/', function(req, res) {
   if (sess.username == 0)
-    res.render('index');
+    res.render('indexBeforeSignin');
   else
     res.render('index', { name: sess.username });
 });
@@ -76,10 +76,7 @@ router.post('/addUser', function(req, res) {
 
   UserIns.save(function(err, UserIns){
     if(err) return console.error(err);
-    res.send({
-      id: UserIns.id,
-      password: UserIns.password
-    })
+    res.redirect('/signin');
   });
 
 });
