@@ -6,15 +6,13 @@ html
     body
         div(id='body')
             header(id='head')
-                h1(id='title') F.Log homepage
+                h1(id='title') hello
             article(id='article')
-                div(id="contents")
-                header(class="contentsHeader")
-                    h2(class="contentsTitle")= username
-                p(class="contentsDescription")
+                h2(id="welcome")= username
+                p(id="link")
                     a(href="./blog") blog
-                    br
+                    p
                     a(href="./write") write
                 
             footer(id="foot")
-            span(id="information") developed by JinhyeokBang
+                span(id="information") developed by JinhyeokBang
