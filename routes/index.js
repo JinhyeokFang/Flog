@@ -64,6 +64,12 @@ router.get('/signup', function(req, res) {
   res.render('signup');
 });
 
+/* GET signout page. */
+router.get('/signout', (req, res) => {
+  sess.username = 0;
+  res.redirect('/');
+});
+
 /* GET write page. */
 router.get('/write', function(req, res) {
   if (sess.username != 0)
