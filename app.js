@@ -25,7 +25,7 @@ app.use(express.static('./files'));
 app.use('/', routes);
 
 /// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     res.status(404);
     res.render('error');
 });

@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost:27017/test');
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
+db.once('open', () => {
 	console.log("mongo db connection OK.");
 });
 
@@ -47,7 +47,7 @@ router.get('/blog/:name', (req,res) => {
 });
 
 /* GET index page. */
-router.get('/', function(req, res) {
+router.get('/', (req, res) => {
   if (sess.username == 0)
     res.render('indexBeforeSignin');
   else
@@ -55,12 +55,12 @@ router.get('/', function(req, res) {
 });
 
 /* GET signin page. */
-router.get('/signin', function(req, res) {
+router.get('/signin', (req, res) => {
   res.render('signin');
 });
 
 /* GET signup page. */
-router.get('/signup', function(req, res) {
+router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
@@ -71,16 +71,16 @@ router.get('/signout', (req, res) => {
 });
 
 /* GET write page. */
-router.get('/write', function(req, res) {
+router.get('/write', (req, res) => {
   if (sess.username != 0)
     res.render('write');
 });
 
 /* POST addUser page. */
-router.post('/addUser', function(req, res) {
+router.post('/addUser', (req, res) => {
   var UserIns = new UserModel({ id:req.body.id, password:req.body.pass });
 
-  UserIns.save(function(err, UserIns){
+  UserIns.save((err, UserIns) => {
     if(err) return console.error(err);
     res.redirect('/signin');
   });
@@ -88,7 +88,7 @@ router.post('/addUser', function(req, res) {
 });
 
 /* POST User page. */
-router.post('/User', function(req, res) {
+router.post('/User', (req, res) => {
   UserModel.findOne({
     id: req.body.id,
     password: req.body.pass
@@ -105,7 +105,7 @@ router.post('/User', function(req, res) {
 });
 
 /* POST addContents page. */
-router.post('/addContents', function(req, res) {
+router.post('/addContents', (req, res) => {
     var ContentsTitle = req.body.title;
     var ContentsDescription = req.body.description;
     var ContentsId = req.files.file.name;
@@ -113,7 +113,7 @@ router.post('/addContents', function(req, res) {
     var timeNow = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
     var ContentsIns = new ContentsModel({ title: ContentsTitle, description: ContentsDescription, id: sess.username, fileId: ContentsId, time: timeNow, path: "../"+req.files.file.path.substring(20,req.files.file.path.length) });
 
-    ContentsIns.save(function(err, UserIns){
+    ContentsIns.save((err, UserIns) => {
       if(err) return console.error(err);
       if(req.files.file) {
         res.redirect('/blog');
@@ -123,7 +123,7 @@ router.post('/addContents', function(req, res) {
 });
 
 /* DELETE addContents page. */
-router.delete('/deleteContents', function(req, res) {
+router.delete('/deleteContents', (req, res) => {
 
 });
 
