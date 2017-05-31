@@ -32,7 +32,7 @@ var sess = {username:0};
 
 /* GET my blog page. */
 router.get('/blog/', (req,res) => {
-  ContentsModel.find((err,data) => {
+  ContentsModel.find({id : sess.username },(err,data) => {
     if (sess.username != 0 && !err)
       res.render('blog', { name: sess.username , data: data, length: data.length});   
   }).sort({ "_id" : -1 });
@@ -40,9 +40,9 @@ router.get('/blog/', (req,res) => {
 
 /* GET the other user's blog page. */
 router.get('/blog/:name', (req,res) => {
-  ContentsModel.find((err,data) => {
-    if (sess.username != 0 && !err)
-      res.render('blog', { name: sess.username , data: data, length: data.length});   
+  ContentsModel.find({id : req.params.name },(err,data) => {
+    if (!err)
+      res.render('blog', { name: req.params.name , data: data, length: data.length});   
   }).sort({ "_id" : -1 });
 });
 
