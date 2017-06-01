@@ -4,7 +4,7 @@ var router = express.Router();
 
 //mongodb
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/flog');
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -32,7 +32,7 @@ var sess = {username:0};
 
 /* GET my blog page. */
 router.get('/blog/', (req,res) => {
-  ContentsModel.find({id : sess.username },(err,data) => {
+  ContentsModel.find({id :  sess.username },(err,data) => {
     if (sess.username != 0 && !err)
       res.render('blog', { name: sess.username , data: data, length: data.length});   
   }).sort({ "_id" : -1 });
@@ -56,18 +56,22 @@ router.get('/', (req, res) => {
 
 /* GET signin page. */
 router.get('/signin', (req, res) => {
+  if (sess.username == 0)
   res.render('signin');
 });
 
 /* GET signup page. */
 router.get('/signup', (req, res) => {
-  res.render('signup');
+  if (sess.username == 0)
+    res.render('signup');
 });
 
 /* GET signout page. */
 router.get('/signout', (req, res) => {
-  sess.username = 0;
-  res.redirect('/');
+  if (sess.username != 0) {
+    sess.username = 0;
+    res.redirect('/');
+  }
 });
 
 /* GET write page. */
@@ -122,13 +126,14 @@ router.post('/addContents', (req, res) => {
     });
 });
 
-/* DELETE addContents page. */
-router.delete('/deleteContents', (req, res) => {
-
-});
-
-router.get('/findAll', (req,res) => {
-
+/* POST addContents page. */
+router.post('/deleteContents', (req, res) => {
+  var id = req.body.contentsId;
+  ContentsModel.remove({
+    _id : id
+  }, (err,output) => {
+    res.redirect('/blog');
+  });
 });
 
 module.exports = router;

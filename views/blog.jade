@@ -14,6 +14,9 @@ html
             header(class="contentsHeader")
               h2(class="contentsTitle")= data[i].title
               h3(class="contentsTime")= data[i].time
+              form(id="delete" action="/deleteContents" method="POST")
+                input(type="hidden" name="contentsId" size="0" value= data[i]._id)
+                input(id="button" type="submit" value="DELETE")
             p(class="contentsDescription")= data[i].description
             p(class="contentsFiles")
               a(href="../files/"+data[i].path)= data[i].fileId
