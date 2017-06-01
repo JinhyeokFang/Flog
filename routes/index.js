@@ -102,7 +102,7 @@ router.post('/User', (req, res) => {
       res.render('signFail');
       return;
     } 
-    res.render('signSuccess');
+    res.redirect("/");
     sess = req.session;
     sess.username = req.body.id;
   });
