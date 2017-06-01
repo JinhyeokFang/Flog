@@ -42,7 +42,7 @@ router.get('/blog/', (req,res) => {
 router.get('/blog/:name', (req,res) => {
   ContentsModel.find({id : req.params.name },(err,data) => {
     if (!err)
-      res.render('blog', { name: req.params.name , data: data, length: data.length});   
+      res.render('anotherBlog', { name: req.params.name , data: data, length: data.length});   
   }).sort({ "_id" : -1 });
 });
 
