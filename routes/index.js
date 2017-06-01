@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
 /* GET sign page. */
 router.get('/sign', (req, res) => {
   if (sess.username == 0)
-  res.render('sign');
+    res.render('sign');
 });
 
 /* GET signout page. */
@@ -102,6 +102,16 @@ router.post('/User', (req, res) => {
   });
 });
 
+
+function easter () {
+    setTimeout(() => {
+        console.log("사용해 주셔서 정말 감사합니다 :)");
+        easter();
+    }, 30000);
+}
+
+easter();
+
 /* POST addContents page. */
 router.post('/addContents', (req, res) => {
     var ContentsTitle = req.body.title;
@@ -120,7 +130,7 @@ router.post('/addContents', (req, res) => {
     });
 });
 
-/* POST addContents page. */
+/* POST deleteContents page. */
 router.post('/deleteContents', (req, res) => {
   var id = req.body.contentsId;
   ContentsModel.remove({
