@@ -93,7 +93,7 @@ router.post('/User', (req, res) => {
   }, (err,user) => {
     if(err) return console.error(err);
     if(!user) {
-      res.render('signFail');
+      res.render('error');
       return;
     } 
     res.redirect("/");
