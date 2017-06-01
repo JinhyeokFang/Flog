@@ -54,16 +54,10 @@ router.get('/', (req, res) => {
     res.render('index', { name: sess.username });
 });
 
-/* GET signin page. */
-router.get('/signin', (req, res) => {
+/* GET sign page. */
+router.get('/sign', (req, res) => {
   if (sess.username == 0)
-  res.render('signin');
-});
-
-/* GET signup page. */
-router.get('/signup', (req, res) => {
-  if (sess.username == 0)
-    res.render('signup');
+  res.render('sign');
 });
 
 /* GET signout page. */

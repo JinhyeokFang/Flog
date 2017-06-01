@@ -7,6 +7,12 @@ html
         div(id='body')
             article(id='article')
                 div(id="contents")
+                    p signin
+                    form(id="sign" action="../User" method="post")
+                        input(id="id" name="id")
+                        input(id="pass" name="pass")
+                        input(id="button" type="submit" value="submit")
+                    p signup
                     form(id="sign" action="../addUser" method="post")
                         input(id="id" name="id")
                         input(id="pass" name="pass")
