@@ -27,7 +27,7 @@ app.use('/', routes);
 /// catch 404 and forwarding to error handler
 app.use((req, res, next) => {
     res.status(404);
-    res.render('error');
+    res.render('error', { message: "존재하지 않는 페이지이거나 들어갈 수 없습니다." } );
 });
 
 app.listen(8080, () => {

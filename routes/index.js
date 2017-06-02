@@ -76,13 +76,20 @@ router.get('/write', (req, res) => {
 
 /* POST addUser page. */
 router.post('/addUser', (req, res) => {
-  var UserIns = new UserModel({ id:req.body.id, password:req.body.pass });
+  UserModel.findOne({
+    id: req.body.id
+  }, (err,user) => {
+    if(!user) {
+        var UserIns = new UserModel({ id:req.body.id, password:req.body.pass });
 
-  UserIns.save((err, UserIns) => {
-    if(err) return console.error(err);
-    res.redirect('/signin');
+        UserIns.save((err, UserIns) => {
+          if(err) return console.error(err);
+          res.redirect('/sign');
+        });
+    } else {
+      res.render('error' , { message: "이미 존제하는 아이디입니다." } );
+    }
   });
-
 });
 
 /* POST User page. */
@@ -93,7 +100,7 @@ router.post('/User', (req, res) => {
   }, (err,user) => {
     if(err) return console.error(err);
     if(!user) {
-      res.render('error');
+      res.render('error', { message: "아이디나 비밀번호가 틀렸습니다." } );
       return;
     } 
     res.redirect("/");
