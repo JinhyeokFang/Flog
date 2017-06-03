@@ -1,9 +1,9 @@
 {
-  "name": "FLog",
-  "version": "0.2.0",
+  "name": "flog",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodejs ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
