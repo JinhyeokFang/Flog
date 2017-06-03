@@ -18,7 +18,7 @@ app.set('view engine', 'jade');
 
 //middle ware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('./public'));
 app.use(multipart({ uploadDir: __dirname + '/files'}));
 app.use(express.static('./files'));
